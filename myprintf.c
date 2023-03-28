@@ -24,28 +24,28 @@ if (format[n] == '%')
 {
 if (format[n + 1] == '\0')
 {
-print_buf(buffer, ibuf), free(buffer), v(arguments);
+print_buf(buffer, ibuf), free(buffer), va_end(arguments);
 return (-1);
 }
 else
 {
-function = get_print_func(format, n + 1);
+function = getFunct(format, n + 1);
 if (function == NULL)
 {
 if (format[n + 1] == ' ' && !format[n + 2])
 return (-1);
-handl_buf(buffer, format[n], buf), lenght++, n--;
+handleBuffer(buffer, format[n], buf), lenght++, n--;
 }
 else
 {
 len += function(arguments, buffer, buf);
-n += ev_print_func(format, n + 1);
+n += printFunc(format, n + 1);
 }
 }
 n++;
 }
 else
-handl_buf(buffer, format[n], buf), lenght++;
+handleBuffer(buffer, format[n], buf), lenght++;
 for (buf = lenght; buf > 1024; buf -= 1024)
 ;
 }

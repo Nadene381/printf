@@ -62,7 +62,7 @@ input = (input * -1) - 1;
 neg = 1;
 }
 binary = malloc(sizeof(char) * (32 + 1));
-binary = binaryArray(binary, int_input, neg, 32);
+binary = binaryArray(binary, input, neg, 32);
 hexadecimal = malloc(sizeof(char) * (8 + 1));
 hexadecimal = hexArray(binary, hexadecimal, 1, 8);
 for (digit1 = i = count = 0; hexadecimal[i]; i++)

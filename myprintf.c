@@ -1,42 +1,54 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "main.h"
+
 /**
-*_printf - A function that prints a char, string and %
-*@format: A character string.
-* Return: 1
-*/
+ * _printf - formatted output conversion and print data.
+ * @format: Character string.
+ * Return: 1.
+ */
 int _printf(const char *format, ...)
 {
-va_list arg_list;
-va_start(arg_list, format);
-while (*format != '\0')
+unsigned int n = 0, lenght = 0, buf = 0;
+va_list arguments;
+int (*function)(va_list, char *, unsigned int);
+char *buffer;
+va_start(arguments, format), buffer = malloc(sizeof(char) * 1024);
+if (!format || !buffer || (format[n] == '%' && !format[n + 1]))
+return (-1);
+if (!format[n])
+return (0);
+for (n = 0; format && format[n]; n++)
 {
-if (*format == '%')
+if (format[n] == '%')
 {
-format++;
-if (*format == 's')
+if (format[n + 1] == '\0')
 {
-char *val = va_arg(arg_list, char*);
-printf("%s", val);
-}
-else if (*format == 'c')
-{
-char val = va_arg(arg_list, int);
-printf("%c", val);
-}
-else if (*format == '%')
-{
-printf("%c", 37);
-}
-format++;
+print_buf(buffer, ibuf), free(buffer), v(arguments);
+return (-1);
 }
 else
 {
-printf("%c", *format);
-format++;
+function = get_print_func(format, n + 1);
+if (function == NULL)
+{
+if (format[n + 1] == ' ' && !format[n + 2])
+return (-1);
+handl_buf(buffer, format[n], buf), lenght++, n--;
+}
+else
+{
+len += function(arguments, buffer, buf);
+n += ev_print_func(format, n + 1);
 }
 }
-va_end(arg_list);
-return (1);
+n++;
+}
+else
+handl_buf(buffer, format[n], buf), lenght++;
+for (buf = lenght; buf > 1024; buf -= 1024)
+;
+}
+print_buf(buffer, buf), free(buffer), va_end(arguments);
+return (lenght);
 }

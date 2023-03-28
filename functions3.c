@@ -1,3 +1,5 @@
+#include <stdarg.h>
+#include "main.h"
 /**
 * prinhunt - A Function that prints a short unsigned integer
 * @arguments: number to print

@@ -90,7 +90,7 @@ return (1);
 }
 if (input < 0)
 {
-inputinput = (input* -1) - 1;
+inputinput = (input * -1) - 1;
 neg = 1;
 }
 

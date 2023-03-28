@@ -149,6 +149,50 @@ ibuf = handleBuffer(buf, ((n / div) % 10) + '0', ibuf);
 }
 return (i + isneg);
 }
+/**
+* prinhhex - A function that prints a short decimal in hexadecimal
+* @arguments: input string
+* @buf: buffer pointer
+* @ibuf: index for buffer pointer
+* Return: 1
+*/
+int prinhhex(va_list arguments, char *buf, unsigned int ibuf)
+{
+short int input, i, neg, count, digit1;
+char *hexadecimal, *binary;
+
+input = va_arg(arguments, int);
+neg = 0;
+if (input == 0)
+{
+ibuf = handleBuffer(buf, '0', ibuf);
+return (1);
+}
+if (input < 0)
+{
+input = (input * -1) - 1;
+neg = 1;
+}
+
+binary = malloc(sizeof(char) * (16 + 1));
+binary = binaryArray(binary, input, neg, 16);
+hexadecimal = malloc(sizeof(char) * (4 + 1));
+hexadecimal = hexArray(binary, hexadecimal, 0, 4);
+for (digit1 = i = count = 0; hexadecimal[i]; i++)
+{
+if (hexadecimal[i] != '0' && digit1 == 0)
+digit1 = 1;
+if (digit1)
+{
+ibuf = handleBuffer(buf, hexadecimal[i], ibuf);
+count++;
+}
+}
+free(binary);
+free(hexadecimal);
+return (count);
+}
+
 
 
 

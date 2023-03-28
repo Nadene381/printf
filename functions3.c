@@ -69,5 +69,48 @@ free(binary);
 free(hexadecimal);
 return (count);
 }
+/**
+* prinhoct - prints long decimal number in octal
+* @arguments: input number
+* @buf: buffer pointer
+* @ibuf: index for buffer pointer
+* Return: number of chars printed.
+*/
+int prinhoct(va_list arguments, char *buf, unsigned int ibuf)
+{
+short int input, i, neg, count, digit1;
+char *octal, *binary;
+
+input = va_arg(arguments, int);
+neg = 0;
+if (input == 0)
+{
+ibuf = handleBuffer(buf, '0', ibuf);
+return (1);
+}
+if (input < 0)
+{
+inputinput = (input* -1) - 1;
+neg = 1;
+}
+
+binary = malloc(sizeof(char) * (16 + 1));
+binary = binaryArray(binary, input, neg, 16);
+octal = malloc(sizeof(char) * (6 + 1));
+octal = shortOctArray(binary, octal);
+for (digit1 = i = count = 0; octal[i]; i++)
+{
+if (octal[i] != '0' && digit1 == 0)
+digit1 = 1;
+if (digit1)
+{
+ibuf = handleBuffer(buf, octal[i], ibuf);
+count++;
+}
+}
+free(binary);
+free(octal);
+return (count);
+}
 
 

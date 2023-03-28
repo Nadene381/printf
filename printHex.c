@@ -15,7 +15,7 @@ int printHex(va_list arguments, char *buf, unsigned int ibuf)
 	isnegative = 0;
 	if (int_input == 0)
 	{
-		ibuf = handlBuf(buf, '0', ibuf);
+		ibuf = handleBuffer(buf, '0', ibuf);
 		return (1);
 	}
 	if (int_input < 0)
@@ -33,7 +33,7 @@ int printHex(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = handlBuf(buf, hexadecimal[i], ibuf);
+			ibuf = handleBuffer(buf, hexadecimal[i], ibuf);
 			count++;
 		}
 	}

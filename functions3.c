@@ -23,7 +23,7 @@ m /= 10;
 }
 
 for (i = 0; div > 0; div /= 10, i++)
-i{
+{
 ibuf = handleBuffer(buf, ((n / div) % 10) + '0', ibuf);
 }
 return (i);
@@ -92,7 +92,7 @@ return (1);
 }
 if (input < 0)
 {
-inputinput = (input * -1) - 1;
+input = (input * -1) - 1;
 neg = 1;
 }
 
@@ -194,7 +194,3 @@ free(binary);
 free(hexadecimal);
 return (count);
 }
-
-
-
-

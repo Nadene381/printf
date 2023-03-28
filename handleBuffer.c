@@ -11,7 +11,7 @@ unsigned int handlebuffer(char *buf, char c, unsigned int i)
 {
 if (i == 1024)
 {
-printBuf(buf, i);
+print_buf(buf, i);
 i = 0;
 }
 buf[i] = c;

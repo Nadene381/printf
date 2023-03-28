@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdarg.h>
 #include "main.h"
 /**
@@ -7,13 +8,11 @@
 */
 int _printf(const char *format, ...)
 {
-va_list arg_list;
-va_start(arg_list, format);
 char character;
 char *string;
-char *percentage;
-char *n;
-n = format;
+const char *n = format;
+va_list arg_list;
+va_start(arg_list, format);
 while (*n != '\0')
 {
 if (*n == '%')
@@ -42,5 +41,6 @@ n++;
 }
 }
 va_end(arg_list);
+return (1);
 }
 

@@ -67,4 +67,52 @@ ibuf = handleBuffer(buf, str[n], ibuf);
 }
 return (i);
 }
+/**
+* print_prg - A function that writes the character c to stdout
+* @a: input char
+* @buf: buffer pointer
+* @i: index for buffer pointer
+* Return: On success 1.
+*/
+int print_prg(va_list a __attribute__((unused)), char *buf, unsigned int i)
+{
+handleBuffer(buf, '%', i);
+return (1);
+}
+/**
+* prinpint - A function that print integer with plus symbol
+* @arguments: input string
+* @buf: buffer pointer
+* @ibuf: index for buffer pointer
+* Return: 1
+*/
+int prinpint(va_list arguments, char *buf, unsigned int ibuf)
+{
+int input;
+unsigned int n, m, i, div;
+
+input = va_arg(arguments, int);
+if (input < 0)
+{
+n = input * -1;
+ibuf = handleBuffer(buf, '-', ibuf);
+}
+else
+{
+n = input;
+ibuf = handleBuffer(buf, '+', ibuf);
+}
+m = n;
+div = 1;
+while (m > 9)
+{
+div *= 10;
+m /= 10;
+}
+for (i = 0; div > 0; div /= 10, i++)
+{
+ibuf = handleBuffer(buf, ((n / div) % 10) + '0', ibuf);
+}
+return (i + 1);
+}
 

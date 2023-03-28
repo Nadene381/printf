@@ -16,7 +16,7 @@ int prinnoct(va_list arguments, char *buf, unsigned int ibuf)
 	isnegative = 0;
 	if (int_input == 0)
 	{
-		ibuf = handlBuf(buf, '0', ibuf);
+		ibuf = handleBuffer(buf, '0', ibuf);
 		return (1);
 	}
 	if (int_input < 0)
@@ -24,7 +24,7 @@ int prinnoct(va_list arguments, char *buf, unsigned int ibuf)
 		int_input = (int_input * -1) - 1;
 		isnegative = 1;
 	}
-	ibuf = handlBuf(buf, '0', ibuf);
+	ibuf = handleBuffer(buf, '0', ibuf);
 	binary = malloc(sizeof(char) * (32 + 1));
 	binary = binaryArray(binary, int_input, isnegative, 32);
 	octal = malloc(sizeof(char) * (11 + 1));
@@ -35,7 +35,7 @@ int prinnoct(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = handlBuf(buf, octal[i], ibuf);
+			ibuf = handleBuffer(buf, octal[i], ibuf);
 			count++;
 		}
 	}

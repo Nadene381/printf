@@ -112,5 +112,43 @@ free(binary);
 free(octal);
 return (count);
 }
+/**
+* prinhint - A function that prints a short integer
+* @arguments: input string
+* @buf: buffer pointer
+* @ibuf: index for buffer pointer
+* Return: 1.
+*/
+int prinhint(va_list arguments, char *buf, unsigned int ibuf)
+{
+short int input;
+unsigned short int n, m, i, div, isneg;
+
+input = va_arg(arguments, int);
+isneg = 0;
+if (input < 0)
+{
+n = input * -1;
+ibuf = handleBuffer(buf, '-', ibuf);
+isneg = 1;
+}
+else
+{
+n = input;
+}
+m = n;
+div = 1;
+while (m > 9)
+{
+div *= 10;
+m /= 10;
+}
+for (i = 0; div > 0; div /= 10, i++)
+{
+ibuf = handleBuffer(buf, ((n / div) % 10) + '0', ibuf);
+}
+return (i + isneg);
+}
+
 
 

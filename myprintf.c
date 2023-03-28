@@ -8,39 +8,34 @@
 */
 int _printf(const char *format, ...)
 {
-char character;
-char *string;
-const char *n = format;
-va_list arg_list;
-va_start(arg_list, format);
-while (*n != '\0')
-{
-if (*n == '%')
-{
-n++;
-if (*n == 's')
-{
-string = va_arg(arg_list, char*);
-printf("%s", string);
+   va_list arg_list;
+   va_start(arg_list, format);
+   while (*format != '\0') {
+       if (*format == '%') {
+           format++;
+           if (*format == 'd') {
+               int val = va_arg(arg_list, int);
+               printf("%d", val);
+           }
+           else if (*format == 's') {
+               char* val = va_arg(arg_list, char*);
+               printf("%s", val);
+           }
+           else if (*format == 'c') {
+               char val = va_arg(arg_list, int);
+               printf("%c", val);
+           }
+           else if (*format == 'f') {
+               double val = va_arg(arg_list, double);
+               printf("%f", val);
+           }
+           format++;
+       }
+       else {
+           printf("%c", *format);
+           format++;
+       }
+   }
+   va_end(arg_list);
+   return (1);
 }
-else if (*n == 'c')
-{
-character = va_arg(arg_list, int);
-printf("%c", character);
-}
-else if (*n == '%')
-{
-printf("%c", 37);
-}
-n++;
-}
-else
-{
-printf("%c", *n);
-n++;
-}
-}
-va_end(arg_list);
-return (1);
-}
-

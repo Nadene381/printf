@@ -17,5 +17,6 @@ printf("Let's try to printf a simple sentence.\n");
    printf("String:[%s]\n", "I am a string !");
     _printf("Percent:[%%]\n");
     printf("Percent:[%%]\n");
-    return (0);
+   
+  return (0);
 }

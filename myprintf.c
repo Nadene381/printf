@@ -24,7 +24,7 @@ if (format[n] == '%')
 {
 if (format[n + 1] == '\0')
 {
-print_buf(buffer, ibuf), free(buffer), va_end(arguments);
+print_buf(buffer, buf), free(buffer), va_end(arguments);
 return (-1);
 }
 else
@@ -38,7 +38,7 @@ handleBuffer(buffer, format[n], buf), lenght++, n--;
 }
 else
 {
-len += function(arguments, buffer, buf);
+lenght += function(arguments, buffer, buf);
 n += printFunc(format, n + 1);
 }
 }

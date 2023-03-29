@@ -59,5 +59,4 @@ char *longOctArray(char *bnr, char *oct);
 char *shortOctArray(char *bnr, char *oct);
 char *hexArray(char *bnr, char *hex, int isupp, int limit);
 
-
 #endif
